@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proyecto Final Curso JS</title>
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Proyecto Final Curso JS">
+    <meta property="og:locale" content="es_ES">
+    <!-- AUTHOR -->
+    <meta name="author" content="Fedevcode">
+    <!-- ROBOTS -->
+    <meta name="robots" content="no-index">
+    <!-- NO CACHÉ -->
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <!-- FAVICON -->
+    <link rel="icon" href="./assets/images/Favicon.ico">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./scss/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a><img src="./assets/images/Fedevcode_light.png" alt="Fedevcode Logo"></a>
+            <div class="menu">
+                <ul>
+                    <li class="link active">
+                        <a class="active"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 2h3a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3V0h2v2h6V0h2v2zm0 2v2h-2V4H9v2H7V4H5v16h14V4h-2zM7 8h10v2H7V8zm0 4h10v2H7v-2z"/></svg>Administrador de tareas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <button id="newTask" class="new-task"><span>Crear</span></button>
+    
+            <div id="form" class="form">
+                <div id="taskWrapper">
+                    <div>
+                        <input type="text" class="task" id="task" autocomplete="off" placeholder="¿En qué estás trabajando?" required>
+                    </div>
+                    <div>
+                        <input type="text" class="project" id="project" autocomplete="off" placeholder="¿Para qué proyecto?" required>
+                    </div>
+                    <div>
+                        <input type="number" class="hour" id="hour" autocomplete="off" placeholder="¿Cúantas horas te llevó?" required>
+                    </div>
+                    <div>
+                        <button class="submit" id="submit" onclick="registerData()">Añadir tarea</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="tasks-wrapper" id="tagsWrapper">
+                
+            </div>
+        </div>
+    </header>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/page-scroll.js"></script>
+</body>
+</html>

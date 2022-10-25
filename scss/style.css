@@ -1,0 +1,610 @@
+@charset "UTF-8";
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  scroll-behavior: smooth;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+html {
+  font-size: 16px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #121212;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.new-task {
+  width: 200px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 100px 0 20px 100px;
+  border: none;
+  transition: all 0.2s linear;
+  background-color: #ffffff;
+}
+.new-task p {
+  position: relative;
+  top: 0px;
+}
+.new-task p svg {
+  position: relative;
+  top: 2px;
+}
+@-webkit-keyframes entering {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+@keyframes entering {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+@-webkit-keyframes leaving {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none;
+  }
+}
+@keyframes leaving {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none;
+  }
+}
+
+.form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 30px 100px;
+  display: none;
+  transition: all 0.2s linear;
+}
+
+.form div {
+  margin-top: 8px;
+  position: relative;
+}
+
+.form div input {
+  width: 600px;
+  height: 40px;
+  border: 1px solid #000000;
+  outline: none;
+  padding: 12px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.form div input::-moz-placeholder {
+  font-size: 14px;
+}
+.form div input:-ms-input-placeholder {
+  font-size: 14px;
+}
+.form div input::placeholder {
+  font-size: 14px;
+}
+
+.form div button {
+  width: 400px;
+  height: 40px;
+  border-radius: 32px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: rgba(153, 153, 153, 0.5490196078);
+  transition: all 0.2s linear;
+  border: 2px solid transparent;
+  margin: 16px auto 0 auto;
+  color: rgba(0, 0, 0, 0.6705882353);
+}
+
+.form div button:hover {
+  transition: all 0.2s linear;
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+.taskWrapper {
+  background-color: #FFFFFF;
+  padding: 6px 16px 16px 16px;
+  border-radius: 8px;
+}
+.taskWrapper__close {
+  display: flex;
+  justify-content: flex-end;
+}
+.taskWrapper__close span {
+  cursor: pointer;
+}
+.taskWrapper__close span svg {
+  fill: rgba(255, 0, 0, 0.4745098039);
+  transition: all 0.2s linear;
+}
+.taskWrapper__close span svg:hover {
+  fill: rgba(255, 0, 0, 0.7725490196);
+  transition: all 0.2s linear;
+}
+
+.tasks-wrapper {
+  width: 91%;
+  height: auto;
+  padding: 16px 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tasks {
+  margin: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  width: 98%;
+  height: 400px;
+  background-color: #dadada;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@-webkit-keyframes creating {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+
+@keyframes creating {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+@-webkit-keyframes creatingOut {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none !important;
+  }
+}
+@keyframes creatingOut {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none !important;
+  }
+}
+@-webkit-keyframes error {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+@keyframes error {
+  0% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+}
+@-webkit-keyframes errorOut {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none;
+  }
+}
+@keyframes errorOut {
+  0% {
+    opacity: 100%;
+    transition: all 0.3s linear;
+  }
+  50% {
+    opacity: 50%;
+    transition: all 0.3s linear;
+  }
+  100% {
+    opacity: 0%;
+    transition: all 0.3s linear;
+    display: none;
+  }
+}
+.tasks h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 2px 0px #8a8a8a;
+}
+
+.tasks h2 svg {
+  margin-right: 6px;
+  position: relative;
+  top: 2.3px;
+}
+
+.tasks p {
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 2px 0px #8a8a8a;
+}
+
+.tasks p svg {
+  margin-right: 6px;
+  position: relative;
+  top: 2.3px;
+}
+
+.error {
+  width: 96%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgb(158, 3, 3);
+  margin-left: 16px;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+
+.error svg {
+  margin-right: 4px;
+  position: relative;
+  top: 3px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  background-color: #000000;
+  border-bottom: 2px solid #262626;
+  z-index: 1;
+  position: relative;
+}
+
+.navbar a img {
+  width: 220px;
+  height: 32px;
+}
+
+.menu ul {
+  display: flex;
+}
+
+.menu ul li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-right: 32px;
+}
+
+.menu ul li:last-child {
+  margin-right: 0;
+}
+
+.menu ul li a {
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 18px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.menu ul li a:hover {
+  color: #FFFFFF;
+  transition: all 0.2s linear;
+}
+
+.menu ul li a:hover ~ svg {
+  color: #FFFFFF;
+  transition: all 0.2s linear;
+}
+
+.menu ul li a svg {
+  position: relative;
+  top: 5px;
+  margin-right: 8px;
+  fill: #FFFFFF;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.menu ul li a svg:hover {
+  fill: #FFFFFF;
+  transition: all 0.2s linear;
+}
+
+.menu ul li a svg:hover ~ a {
+  color: #FFFFFF;
+  transition: all 0.2s linear;
+}
+
+.active {
+  color: #FFFFFF !important;
+  fill: #FFFFFF;
+}
+
+.actions {
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  position: absolute;
+  bottom: 6px;
+}
+
+.completed {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(50, 175, 0, 0.1294117647);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.completed:hover {
+  background-color: rgba(50, 175, 0, 0.2823529412);
+  transition: all 0.3s linear;
+}
+.completed:hover .completed-svg {
+  fill: #48ff00;
+  transition: all 0.2s linear;
+}
+
+.completed-svg {
+  fill: rgba(64, 175, 0, 0.5490196078);
+  transition: all 0.3s linear;
+}
+
+.trash {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 0, 0, 0.0941176471);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.trash:hover {
+  background-color: rgba(255, 0, 0, 0.1764705882);
+  transition: all 0.3s linear;
+}
+.trash:hover .trash-svg {
+  fill: #ff2301;
+  transition: all 0.3s linear;
+}
+
+.trash-svg {
+  fill: rgba(255, 0, 0, 0.4745098039);
+  transition: all 0.3s linear;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: "", sans-serif;
+  color: #000;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reset {
+  display: block;
+}
+
+.resert-m {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

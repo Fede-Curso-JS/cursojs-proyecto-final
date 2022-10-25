@@ -13,6 +13,9 @@ const closeTasks = document.getElementById('close');
 closeTasks.addEventListener('click', ()=> {
     form.style.animation = 'leaving .3s linear';
     form.style.display = 'none';
+    document.getElementById('task').value = "";
+    document.getElementById('project').value = "";
+    document.getElementById('hour').value = "";
 })
 
 class AddTask {
